@@ -1,1 +1,1 @@
-# web
+# welcome to the official repository of **Khana Yuva Club**, a youth-led organization based in **Malarani-4, Khana, Arghakhanchi, Nepal**. Our club is committed to the development of our local community through various social, cultural, educational, and environmental initiatives
