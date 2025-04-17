@@ -276,10 +276,10 @@ if (paymentForm) {
             // Collect form data
             const formData = new FormData(paymentForm);
             const data = {
-                Name: formData.get('name'),
-                Phone: formData.get('phone'),
-                Amount: formData.get('amount'),
-                Method: formData.get('method'),
+                Name: formData.get('Name'),
+                Phone: formData.get('Phone'),
+                Amount: formData.get('Amount'),
+                Method: formData.get('Method'),
                 screenshotBase64: base64Data,
                 screenshotName: file.name
             };
