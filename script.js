@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Financial Form Submission
+// Financial Form Submission
 const paymentForm = document.getElementById('paymentForm');
 if (paymentForm) {
     paymentForm.addEventListener('submit', async function(e) {
@@ -277,7 +277,7 @@ if (paymentForm) {
             const formData = new FormData(paymentForm);
             const data = {
                 name: formData.get('name'),
-                email: formData.get('email'),
+                email: formData.get('phone'),
                 amount: formData.get('amount'),
                 method: formData.get('method'),
                 screenshotBase64: base64Data,
@@ -285,7 +285,7 @@ if (paymentForm) {
             };
 
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbw3aFZJbN7k3Lvn5Uru5wr8UTRGMLYGEmapruSFaFaWrhwX41oTA4Juh_J9Ht-HCJ0o/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbwcmNYqVDSlJMFRBGx29QO0V53zqPUIZXhQKuTrnahG9txBaPzmy21JYu0pXkD4ns6V/exec', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -311,7 +311,6 @@ if (paymentForm) {
         reader.readAsDataURL(file);
     });
 }
-
   // Scroll to top button
   const scrollTopBtn = document.createElement("button")
   scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>'
