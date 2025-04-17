@@ -277,7 +277,7 @@ if (paymentForm) {
             const formData = new FormData(paymentForm);
             const data = {
                 name: formData.get('name'),
-                email: formData.get('phone'),
+                phone: formData.get('phone'),
                 amount: formData.get('amount'),
                 method: formData.get('method'),
                 screenshotBase64: base64Data,
