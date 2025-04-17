@@ -276,16 +276,16 @@ if (paymentForm) {
             // Collect form data
             const formData = new FormData(paymentForm);
             const data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                amount: formData.get('amount'),
-                method: formData.get('method'),
+                Name: formData.get('Name'),
+                Phone: formData.get('Phone'),
+                Amount: formData.get('Amount'),
+                Method: formData.get('Method'),
                 screenshotBase64: base64Data,
                 screenshotName: file.name
             };
 
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwcmNYqVDSlJMFRBGx29QO0V53zqPUIZXhQKuTrnahG9txBaPzmy21JYu0pXkD4ns6V/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxGRsr4h2ANdRmSq3U51eodeOxqIr0BDeqm8kNup1Nu2qvJtGltBSa6C-Vnc21YxBze/exec', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
