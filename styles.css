@@ -1150,6 +1150,111 @@
       transform: scale(1.1) rotateY(10deg);
     }
   }
+/* Financial Form Styles */
+.payment-form .form-container {
+  padding: 3rem;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.payment-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.8rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  font-family: var(--font-family);
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+}
+
+.form-group input[type="file"] {
+  padding: 0.8rem 0;
+}
+
+.payment-form .btn-primary {
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  align-self: flex-start;
+}
+
+.payment-form .btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+#status {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: center;
+}
+
+#status.success {
+  color: #22c55e; /* Green for success */
+}
+
+#status.error {
+  color: #ef4444; /* Red for error */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .payment-form .form-container {
+      padding: 2rem;
+  }
+
+  .form-group label {
+      font-size: 1.4rem;
+  }
+
+  .form-group input,
+  .form-group select {
+      padding: 1rem;
+      font-size: 1.4rem;
+  }
+
+  .payment-form .btn-primary {
+      padding: 1.2rem;
+      font-size: 1.4rem;
+      width: 100%;
+      text-align: center;
+  }
+}
+  
   
   
   
