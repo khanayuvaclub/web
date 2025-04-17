@@ -243,14 +243,74 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Initialize Tally forms
-  if (typeof Tally !== "undefined") {
-    Tally.loadEmbeds()
-  } else {
-    document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((e) => {
-      e.src = e.dataset.tallySrc
-    })
-  }
+  // Financial Form Submission
+const paymentForm = document.getElementById('paymentForm');
+if (paymentForm) {
+    paymentForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const status = document.getElementById('status');
+        status.textContent = 'पेश गर्दै...';
+        status.className = '';
+
+        const fileInput = document.getElementById('screenshot');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            status.textContent = 'कृपया छवि फाइल चयन गर्नुहोस्।';
+            status.className = 'error';
+            return;
+        }
+
+        // Check file size (limit to ~4MB for Google Apps Script)
+        if (file.size > 4 * 1024 * 1024) {
+            status.textContent = 'फाइल धेरै ठूलो छ। कृपया ४ एमबी भन्दा कमको छवि अपलोड गर्नुहोस्।';
+            status.className = 'error';
+            return;
+        }
+
+        // Convert file to base64
+        const reader = new FileReader();
+        reader.onload = async function(event) {
+            const base64Data = event.target.result.split(',')[1]; // Remove data:image/...;base64, prefix
+
+            // Collect form data
+            const formData = new FormData(paymentForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                amount: formData.get('amount'),
+                method: formData.get('method'),
+                screenshotBase64: base64Data,
+                screenshotName: file.name
+            };
+
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbw3aFZJbN7k3Lvn5Uru5wr8UTRGMLYGEmapruSFaFaWrhwX41oTA4Juh_J9Ht-HCJ0o/exec', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(data)
+                });
+
+                const result = await response.json();
+                if (result.result === 'success') {
+                    status.textContent = 'सफलतापूर्वक पेश गरियो!';
+                    status.className = 'success';
+                    paymentForm.reset();
+                } else {
+                    status.textContent = 'त्रुटि: ' + result.error;
+                    status.className = 'error';
+                }
+            } catch (error) {
+                status.textContent = 'त्रुटि: ' + error.message;
+                status.className = 'error';
+            }
+        };
+        reader.readAsDataURL(file);
+    });
+}
 
   // Scroll to top button
   const scrollTopBtn = document.createElement("button")
