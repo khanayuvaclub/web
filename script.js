@@ -285,7 +285,7 @@ if (paymentForm) {
             };
 
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxGRsr4h2ANdRmSq3U51eodeOxqIr0BDeqm8kNup1Nu2qvJtGltBSa6C-Vnc21YxBze/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxg2aN_ErP6KcNqnHWCXfmxX7GsDl5nguPw93PyOgkpNTcS01SqjTtHrlJJ5gBhE4cN/exec', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
